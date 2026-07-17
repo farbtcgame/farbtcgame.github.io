@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFT Galaxy | Lottie Animation + GIF Exporter</title>
-    <!-- Lottie Web Player -->
+    <title>Lottie to GIF Converter</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <!-- html2canvas + gif.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
     <style>
@@ -21,415 +19,85 @@
             background: #0a0c1a;
             color: #ffffff;
             min-height: 100vh;
-            padding: 1.5rem;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .header {
-            max-width: 1440px;
-            margin: 0 auto 2rem auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
 
-        .logo h1 {
-            font-size: 2.2rem;
+        .header h1 {
+            font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -1px;
         }
 
-        .logo span {
-            font-size: 0.85rem;
+        .header p {
             color: #8a8da0;
-            display: block;
-            -webkit-text-fill-color: #8a8da0;
+            margin-top: 0.5rem;
+            font-size: 1rem;
         }
 
-        .stats {
+        .card {
             background: rgba(255, 255, 255, 0.04);
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .stats .count {
-            color: #ffd700;
-            font-weight: 700;
-        }
-
-        .stats .live-badge {
-            background: #ff2d55;
-            color: white;
-            padding: 0.15rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            animation: pulse 1.5s ease-in-out infinite;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 2rem;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .loading-info {
-            max-width: 1440px;
-            margin: 0 auto 1.5rem auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 0.85rem;
-            color: #8a8da0;
-        }
-
-        .loading-bar {
-            flex: 1;
-            min-width: 120px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .loading-bar .progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #f7971e, #ffd200);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .loading-stats {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            white-space: nowrap;
-        }
-
-        .loading-stats .current-item {
-            color: #ffd700;
-            font-weight: 600;
-            background: rgba(255, 215, 0, 0.08);
-            padding: 0.15rem 0.7rem;
-            border-radius: 12px;
-        }
-
-        .gallery {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .nft-card {
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-            cursor: pointer;
-            border: 2px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-        }
-
-        .nft-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .nft-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .nft-image-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 100%;
-            overflow: hidden;
-            background: #0a0c1a;
-        }
-
-        .nft-image-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-            image-rendering: pixelated;
-        }
-
-        .nft-card:hover .nft-image-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .nft-image-wrapper .placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #12142a;
-            color: #3a3d5a;
-            font-size: 0.7rem;
-            font-weight: 600;
-            gap: 0.4rem;
-            transition: opacity 0.4s ease;
-        }
-
-        .nft-image-wrapper .placeholder .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-top: 2px solid #ffd700;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .nft-info {
-            padding: 0.7rem 0.8rem 0.8rem 0.8rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            background: rgba(10, 12, 26, 0.92);
-            backdrop-filter: blur(8px);
-        }
-
-        .nft-name {
-            font-size: 0.85rem;
+        .card-title {
+            font-size: 1.1rem;
             font-weight: 600;
             color: #f0f0f0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .nft-id {
-            font-size: 0.65rem;
-            color: #8a8da0;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.1rem 0.5rem;
-            border-radius: 12px;
-            align-self: flex-start;
-        }
-
-        .nft-attributes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-top: 0.2rem;
-        }
-
-        .attr-badge {
-            font-size: 0.55rem;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-            color: #a8abce;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 80px;
-        }
-
-        /* ===== Modal ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(12px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: #12142a;
-            border-radius: 24px;
-            max-width: 750px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 2rem;
-            position: relative;
-            border: 2px solid rgba(255, 215, 0, 0.15);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-            animation: modalSlide 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes modalSlide {
-            from {
-                transform: scale(0.9) translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 0.8rem;
-            right: 0.8rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: none;
-            color: #8a8da0;
-            font-size: 1.6rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-        }
-
-        /* ===== Lottie Animation View ===== */
-        .modal-lottie {
-            background: #0a0c1a;
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            min-height: 200px;
-            position: relative;
-        }
-
-        .modal-lottie .lottie-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .modal-lottie .lottie-header span {
-            font-size: 0.8rem;
-            color: #8a8da0;
-            font-weight: 600;
-        }
-
-        .modal-lottie #lottieContainer {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            min-height: 150px;
+        .input-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-lottie #lottieContainer .lottie-placeholder {
-            color: #3a3d5a;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .modal-lottie .lottie-controls {
-            display: flex;
-            justify-content: center;
             gap: 0.8rem;
-            margin-top: 0.8rem;
             flex-wrap: wrap;
         }
 
-        .modal-lottie .lottie-controls button {
+        .input-group input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: #a8abce;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .modal-lottie .lottie-controls button:hover {
-            background: rgba(255, 255, 255, 0.08);
             color: #ffffff;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            outline: none;
         }
 
-        /* ===== Download Buttons ===== */
-        .download-btn {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
+        .input-group input:focus {
+            border-color: #ffd700;
+        }
+
+        .input-group input::placeholder {
+            color: #5a5d7a;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
             border: none;
-            color: #0a0c1a;
             font-weight: 700;
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             display: inline-flex;
@@ -437,114 +105,133 @@
             gap: 0.5rem;
         }
 
-        .download-btn:hover {
+        .btn:hover {
             transform: scale(1.03);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0c1a;
+        }
+
+        .btn-primary:hover {
             box-shadow: 0 6px 30px rgba(255, 215, 0, 0.3);
         }
 
-        .download-btn:disabled {
+        .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
 
-        .modal-image-wrapper {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 1.2rem auto;
-            position: relative;
-            padding-top: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .modal-image-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            image-rendering: pixelated;
-        }
-
-        .modal-info {
-            color: #e0e0e0;
-        }
-
-        .modal-info h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 0.3rem;
-        }
-
-        .modal-info .modal-id {
-            font-size: 0.8rem;
-            color: #8a8da0;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.2rem 0.7rem;
-            border-radius: 16px;
-            display: inline-block;
-            margin-bottom: 0.8rem;
-        }
-
-        .modal-info .modal-description {
-            color: #a8abce;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .modal-info .modal-attrs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.3rem;
-        }
-
-        .modal-info .modal-attrs .attr-tag {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 0.3rem 0.7rem;
-            border-radius: 14px;
-            font-size: 0.75rem;
-            color: #d0d3e0;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .modal-info .modal-attrs .attr-tag strong {
-            color: #ffd700;
-        }
-
-        /* ===== Progress ===== */
-        .download-progress {
-            display: none;
-            margin-top: 0.5rem;
-            width: 100%;
-            height: 4px;
+        .btn-secondary {
             background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            overflow: hidden;
+            color: #f0f0f0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .download-progress .dp-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #f7971e, #ffd200);
-            border-radius: 4px;
-            transition: width 0.1s ease;
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .download-progress.active {
+        .btn-success {
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 6px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff2d55, #ff4466);
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 6px 30px rgba(255, 45, 85, 0.3);
+        }
+
+        /* ===== অ্যানিমেশন ভিউয়ার ===== */
+        .animation-viewer {
+            background: #12142a;
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+
+        .animation-viewer .placeholder {
+            color: #4a4d6a;
+            text-align: center;
+        }
+
+        .animation-viewer .placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
             display: block;
         }
 
-        .status-text {
-            font-size: 0.8rem;
+        .animation-viewer .placeholder h3 {
             color: #8a8da0;
-            margin-top: 0.5rem;
-            text-align: center;
+            font-weight: 400;
+        }
+
+        .animation-viewer .placeholder p {
+            color: #4a4d6a;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        #lottieContainer {
+            width: 100%;
+            max-width: 400px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lottieContainer svg {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+        }
+
+        /* ===== কন্ট্রোলস ===== */
+        .controls {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .controls .btn {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.8rem;
+        }
+
+        /* ===== স্ট্যাটাস ===== */
+        .status-bar {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .status-text {
+            font-size: 0.85rem;
+            color: #8a8da0;
         }
 
         .status-text.success {
@@ -559,10 +246,138 @@
             color: #ffd700;
         }
 
+        .time-display {
+            font-size: 0.8rem;
+            color: #ffd700;
+            font-weight: 600;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+        }
+
+        /* ===== প্রোগ্রেস বার ===== */
+        .progress-container {
+            display: none;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .progress-container.active {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            border-radius: 4px;
+            transition: width 0.15s ease;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #8a8da0;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== প্রিজেট লিংক ===== */
+        .presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .presets .preset-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            color: #8a8da0;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .presets .preset-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+
+        /* ===== রেসপন্সিভ ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .input-group input {
+                min-width: 180px;
+            }
+            .controls {
+                gap: 0.5rem;
+            }
+            .controls .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            #lottieContainer {
+                max-width: 280px;
+                min-height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .input-group {
+                flex-direction: column;
+            }
+            .input-group input {
+                width: 100%;
+                min-width: unset;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            #lottieContainer {
+                max-width: 200px;
+                min-height: 150px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: #4a4d6a;
+            font-size: 0.75rem;
+        }
+
+        .footer a {
+            color: #8a8da0;
+            text-decoration: none;
+        }
+
         .generating-spinner {
             display: inline-block;
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(10, 12, 26, 0.1);
             border-top: 2px solid #0a0c1a;
             border-radius: 50%;
@@ -574,423 +389,279 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            background: #0a0c1a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2a2d4a;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3a3d5a;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .stats {
-                width: 100%;
-                justify-content: center;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 1rem;
-            }
-            .logo h1 {
-                font-size: 1.8rem;
-            }
-            .modal-content {
-                padding: 1.2rem;
-            }
-            .modal-info h2 {
-                font-size: 1.3rem;
-            }
-            .modal-lottie #lottieContainer {
-                max-width: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 0.8rem;
-            }
-            body {
-                padding: 1rem;
-            }
-            .loading-stats {
-                font-size: 0.75rem;
-                gap: 0.5rem;
-            }
-            .modal-lottie #lottieContainer {
-                max-width: 150px;
-            }
-        }
-
-        .footer {
-            max-width: 1440px;
-            margin: 3rem auto 1rem auto;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #4a4d6a;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 2rem;
-        }
-
-        .footer a {
-            color: #8a8da0;
-            text-decoration: none;
-        }
-
-        .time-display {
-            font-size: 0.7rem;
-            color: #ffd700;
-            font-weight: 600;
-            background: rgba(255, 215, 0, 0.1);
-            padding: 0.1rem 0.6rem;
-            border-radius: 12px;
-        }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="logo">
-            <h1>✦ NFT Galaxy</h1>
-            <span>24×24 Pixels · Lottie Animation Hub</span>
+    <div class="container">
+        <!-- ===== হেডার ===== -->
+        <div class="header">
+            <h1>🎬 Lottie to GIF</h1>
+            <p>Lottie JSON লিংক দিন, অ্যানিমেশন দেখুন এবং GIF ডাউনলোড করুন</p>
         </div>
-        <div class="stats">
-            <span class="live-badge">● LIVE</span>
-            <span>🖼️ Total</span>
-            <span class="count" id="totalCount">0</span>
-            <span style="opacity:0.3;margin:0 0.2rem;">|</span>
-            <span>✅ Loaded</span>
-            <span class="count" id="loadedCount">0</span>
-        </div>
-    </header>
 
-    <div class="loading-info">
-        <div class="loading-bar">
-            <div class="progress" id="progressBar"></div>
-        </div>
-        <div class="loading-stats">
-            <span id="statusMessage">🔮 Starting pipeline...</span>
-            <span id="percentageDisplay">0%</span>
-            <span id="currentToken" class="current-item">#0</span>
-        </div>
-    </div>
-
-    <div class="gallery" id="galleryContainer"></div>
-
-    <!-- ===== Modal ===== -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">✕</button>
-            <div class="modal-image-wrapper">
-                <img id="modalImage" src="" alt="NFT Layout" />
+        <!-- ===== ইনপুট কার্ড ===== -->
+        <div class="card">
+            <div class="card-title">📎 Lottie JSON URL</div>
+            <div class="input-group">
+                <input type="text" id="lottieUrlInput" placeholder="https://assets.../animation.json" value="https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json" />
+                <button class="btn btn-primary" id="loadBtn">▶️ লোড করুন</button>
             </div>
-            <div class="modal-info">
-                <h2 id="modalName">NFT Asset Name</h2>
-                <span class="modal-id" id="modalId">#0000</span>
-                <p class="modal-description" id="modalDescription">Asset metadata description placeholder.</p>
-                <div class="modal-attrs" id="modalAttrs"></div>
+            <div class="presets">
+                <span style="color:#4a4d6a;font-size:0.7rem;display:flex;align-items:center;">দ্রুত লিংক:</span>
+                <button class="preset-btn" data-url="https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json">🌟 ডায়মন্ড</button>
+                <button class="preset-btn" data-url="https://assets2.lottiefiles.com/packages/lf20_q6kl7t2a.json">🦊 ফক্স</button>
+                <button class="preset-btn" data-url="https://assets5.lottiefiles.com/packages/lf20_ymqo6jrv.json">🚀 রকেট</button>
+                <button class="preset-btn" data-url="https://assets3.lottiefiles.com/packages/lf20_h3d3jhji.json">🌈 রেইনবো</button>
+                <button class="preset-btn" data-url="https://assets10.lottiefiles.com/packages/lf20_touohxv0.json">🐱 ক্যাট</button>
             </div>
+        </div>
 
-            <!-- ===== Lottie Engine Box ===== -->
-            <div class="modal-lottie">
-                <div class="lottie-header">
-                    <span>🎬 Dynamic Lottie Render</span>
-                    <span class="time-display" id="timeDisplay">⏱️ 0ms</span>
-                </div>
+        <!-- ===== অ্যানিমেশন ভিউয়ার ===== -->
+        <div class="card">
+            <div class="card-title">🎨 অ্যানিমেশন প্রিভিউ</div>
+            <div class="animation-viewer">
                 <div id="lottieContainer">
-                    <div class="lottie-placeholder">⏳ Connecting to engine context...</div>
+                    <div class="placeholder">
+                        <span class="icon">🎬</span>
+                        <h3>Lottie অ্যানিমেশন এখানে দেখাবে</h3>
+                        <p>উপরে URL দিন এবং "লোড করুন" ক্লিক করুন</p>
+                    </div>
                 </div>
-                <div class="lottie-controls">
-                    <button id="playBtn">▶️ Play</button>
-                    <button id="pauseBtn">⏸️ Pause</button>
-                    <button id="stopBtn">⏹️ Stop</button>
-                    <button id="downloadGifBtn" class="download-btn" style="font-size:0.75rem;padding:0.3rem 1rem;">
-                        <span>⬇️</span> Download GIF
-                    </button>
+            </div>
+
+            <!-- ===== কন্ট্রোলস ===== -->
+            <div class="controls">
+                <button class="btn btn-secondary" id="playBtn">▶️ প্লে</button>
+                <button class="btn btn-secondary" id="pauseBtn">⏸️ পজ</button>
+                <button class="btn btn-secondary" id="stopBtn">⏹️ স্টপ</button>
+                <button class="btn btn-success" id="downloadGifBtn">⬇️ GIF ডাউনলোড</button>
+                <button class="btn btn-danger" id="clearBtn">🗑️ ক্লিয়ার</button>
+            </div>
+
+            <!-- ===== স্ট্যাটাস ===== -->
+            <div class="status-bar">
+                <span class="status-text" id="statusText">✨ প্রস্তুত</span>
+                <span class="time-display" id="timeDisplay">⏱️ 0ms</span>
+            </div>
+
+            <!-- ===== প্রোগ্রেস ===== -->
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
-                <div class="status-text" id="statusText">✨ Lottie Asset Initialized</div>
-                <div class="download-progress" id="downloadProgress">
-                    <div class="dp-bar" id="dpBar"></div>
+                <div class="progress-label">
+                    <span id="progressText">জেনারেট করছি...</span>
+                    <span id="progressPercent">0%</span>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="footer">
-        <p>🚀 IPFS Node Topology · bafybeigzskuufl4dh5wftw5ul3aohfj6j63n46ooj7naggsu547vzpvlwi</p>
-        <p style="margin-top:0.3rem; opacity:0.6;">Powered by Adaptive JSON Vector Parsing · High-Speed GIF Builder Core</p>
+        <div class="footer">
+            <p>🚀 Lottie JSON → GIF Converter · টার্বো ফাস্ট জেনারেশন</p>
+            <p style="margin-top:0.3rem; opacity:0.6;">html2canvas + gif.js · সম্পূর্ণ ব্রাউজারে কাজ করে</p>
+        </div>
     </div>
 
     <script>
         (function() {
             'use strict';
 
-            const BASE_URI = 'ipfs://bafybeidaokz3ymhqsvhtzhhz4iqtb6ghj52xjsgb67oex6si3it3ji5mwm/';
-            const TOTAL_SUPPLY = 100; // Adjusted for optimal runtime performance testing
-            const GALLERY = document.getElementById('galleryContainer');
-            const PROGRESS_BAR = document.getElementById('progressBar');
-            const MAIN_STATUS_TEXT = document.getElementById('statusMessage');
-            const PERCENTAGE = document.getElementById('percentageDisplay');
-            const LOADED_COUNT = document.getElementById('loadedCount');
-            const TOTAL_COUNT = document.getElementById('totalCount');
-            const CURRENT_TOKEN = document.getElementById('currentToken');
-
-            const modalOverlay = document.getElementById('modalOverlay');
-            const modalClose = document.getElementById('modalClose');
-            const modalImage = document.getElementById('modalImage');
-            const modalName = document.getElementById('modalName');
-            const modalId = document.getElementById('modalId');
-            const modalDescription = document.getElementById('modalDescription');
-            const modalAttrs = document.getElementById('modalAttrs');
+            // ===== DOM =====
+            const lottieUrlInput = document.getElementById('lottieUrlInput');
+            const loadBtn = document.getElementById('loadBtn');
             const lottieContainer = document.getElementById('lottieContainer');
-            const downloadBtn = document.getElementById('downloadGifBtn');
-            const downloadProgress = document.getElementById('downloadProgress');
-            const dpBar = document.getElementById('dpBar');
             const statusText = document.getElementById('statusText');
             const timeDisplay = document.getElementById('timeDisplay');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progressPercent = document.getElementById('progressPercent');
 
-            // Dynamic gateway failover architecture
-            const IPFS_GATEWAYS = ['https://cloudflare-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://gateway.pinata.cloud/ipfs/'];
-            const metadataCache = new Map();
-            const PLACEHOLDER_IMG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E';
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const downloadBtn = document.getElementById('downloadGifBtn');
+            const clearBtn = document.getElementById('clearBtn');
 
             let lottieInstance = null;
-            let currentModalData = { tokenId: null, metadata: null, imageUrl: null, lottieUrl: null };
             let isGenerating = false;
             let startTime = 0;
-            let timeRequestFrame = null;
+            let currentAnimationUrl = '';
 
-            function ipfsToHttp(uri, gatewayIndex = 0) {
-                if (!uri) return '';
-                if (uri.startsWith('ipfs://')) {
-                    return uri.replace('ipfs://', IPFS_GATEWAYS[gatewayIndex]);
-                }
-                return uri;
-            }
-
-            async function fetchMetadata(tokenId) {
-                if (metadataCache.has(tokenId)) return metadataCache.get(tokenId);
-
-                for (let i = 0; i < IPFS_GATEWAYS.length; i++) {
-                    const httpUrl = ipfsToHttp(`${BASE_URI}${tokenId}`, i);
-                    try {
-                        const response = await fetch(httpUrl, { headers: { 'Accept': 'application/json' }, signal: AbortSignal.timeout(6000) });
-                        if (!response.ok) throw new Error(`HTTP Error Status: ${response.status}`);
-                        const data = await response.json();
-                        metadataCache.set(tokenId, data);
-                        return data;
-                    } catch (error) {
-                        console.warn(`Gateway index ${i} failed for token #${tokenId}. Retrying next gateway line...`);
-                    }
-                }
-
-                const fallback = {
-                    name: `NFT Design #${tokenId}`,
-                    description: 'Metadata stream unreachable at present resolution gateways.',
-                    image: '',
-                    attributes: [],
-                    animation_url: 'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json'
-                };
-                metadataCache.set(tokenId, fallback);
-                return fallback;
-            }
-
-            function loadImage(imgElement, imageUri) {
-                if (!imageUri) {
-                    imgElement.src = PLACEHOLDER_IMG;
-                    return;
-                }
-                let currentGw = 0;
-                imgElement.style.imageRendering = 'pixelated';
-                imgElement.src = ipfsToHttp(imageUri, currentGw);
-                
-                imgElement.onerror = function() {
-                    currentGw++;
-                    if (currentGw < IPFS_GATEWAYS.length) {
-                        this.src = ipfsToHttp(imageUri, currentGw);
-                    } else {
-                        this.src = PLACEHOLDER_IMG;
-                    }
-                };
-            }
-
-            function isValidHexColor(color) {
-                if (!color) return false;
-                const hex = color.replace('#', '');
-                return /^[0-9A-Fa-f]{6}$/.test(hex) || /^[0-9A-Fa-f]{3}$/.test(hex);
-            }
-
-            function loadLottieAnimation(animationUrl) {
+            // ===== Lottie লোড =====
+            function loadLottieAnimation(url) {
                 if (lottieInstance) {
                     lottieInstance.destroy();
                     lottieInstance = null;
                 }
-                if (timeRequestFrame) cancelAnimationFrame(timeRequestFrame);
 
-                lottieContainer.innerHTML = '<div class="lottie-placeholder">⏳ Constructing Vector Container...</div>';
-                
-                // Load target asset configuration
-                let gatewayIndex = 0;
-                let targetUrl = animationUrl.startsWith('http') ? animationUrl : ipfsToHttp(animationUrl, gatewayIndex);
+                currentAnimationUrl = url;
+                lottieContainer.innerHTML = '<div class="placeholder" style="color:#3a3d5a;">⏳ লোড হচ্ছে...</div>';
 
-                function attemptLottieLoad(urlPath) {
+                try {
                     lottieInstance = lottie.loadAnimation({
                         container: lottieContainer,
                         renderer: 'svg',
                         loop: true,
                         autoplay: true,
-                        path: urlPath,
-                        rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+                        path: url,
+                        rendererSettings: {
+                            preserveAspectRatio: 'xMidYMid slice'
+                        }
                     });
 
                     lottieInstance.addEventListener('DOMLoaded', () => {
-                        statusText.textContent = '✅ Lottie Workspace Rendered Successfully!';
+                        statusText.textContent = '✅ অ্যানিমেশন লোড হয়েছে!';
                         statusText.className = 'status-text success';
                         startTime = Date.now();
                         updateTimeDisplay();
+                        // প্লেসহোল্ডার রিমুভ
+                        const placeholder = lottieContainer.querySelector('.placeholder');
+                        if (placeholder) placeholder.remove();
                     });
 
-                    lottieInstance.addEventListener('data_failed', () => handleLottieError());
-                    lottieInstance.addEventListener('error', () => handleLottieError());
-                }
-
-                function handleLottieError() {
-                    gatewayIndex++;
-                    if (gatewayIndex < IPFS_GATEWAYS.length && !animationUrl.startsWith('http')) {
-                        if (lottieInstance) lottieInstance.destroy();
-                        attemptLottieLoad(ipfsToHttp(animationUrl, gatewayIndex));
-                    } else {
-                        lottieContainer.innerHTML = `<div class="lottie-placeholder" style="color:#ff2d55;">❌ Failed to build runtime vector path layers.</div>`;
-                        statusText.textContent = '❌ Target component runtime execution failed.';
+                    lottieInstance.addEventListener('error', () => {
+                        lottieContainer.innerHTML = `
+                            <div class="placeholder" style="color:#ff2d55;">
+                                <span class="icon">❌</span>
+                                <h3>অ্যানিমেশন লোড করতে ব্যর্থ</h3>
+                                <p style="color:#8a8da0;font-size:0.7rem;word-break:break-all;">${url}</p>
+                            </div>
+                        `;
+                        statusText.textContent = '❌ অ্যানিমেশন লোড ব্যর্থ!';
                         statusText.className = 'status-text error';
-                    }
-                }
+                    });
 
-                attemptLottieLoad(targetUrl);
+                    return lottieInstance;
+                } catch (error) {
+                    console.error('Lottie লোড error:', error);
+                    lottieContainer.innerHTML = `
+                        <div class="placeholder" style="color:#ff2d55;">
+                            <span class="icon">❌</span>
+                            <h3>ইনভ্যালিড URL</h3>
+                            <p style="color:#8a8da0;font-size:0.7rem;">সঠিক Lottie JSON লিংক দিন</p>
+                        </div>
+                    `;
+                    statusText.textContent = '❌ ইনভ্যালিড Lottie URL!';
+                    statusText.className = 'status-text error';
+                    return null;
+                }
             }
 
+            // ===== টাইম আপডেট =====
             function updateTimeDisplay() {
-                if (lottieInstance) {
+                if (lottieInstance && lottieInstance.isLoaded) {
                     const elapsed = Date.now() - startTime;
                     timeDisplay.textContent = `⏱️ ${elapsed}ms`;
-                    timeRequestFrame = requestAnimationFrame(updateTimeDisplay);
+                }
+                requestAnimationFrame(updateTimeDisplay);
+            }
+
+            // ===== URL ভালিডেশন =====
+            function isValidUrl(string) {
+                try {
+                    new URL(string);
+                    return true;
+                } catch {
+                    return false;
                 }
             }
 
-            function openModal(tokenId, metadata, imageUrl, cardElement) {
-                const verifiedImage = metadata?.image || metadata?.imageUrl || imageUrl;
-                loadImage(modalImage, verifiedImage);
-                
-                modalName.textContent = metadata?.name || `NFT Asset #${tokenId}`;
-                modalId.textContent = `#${tokenId}`;
-                modalDescription.textContent = metadata?.description || 'No detailed attribute profile recorded inside data file.';
-
-                modalAttrs.innerHTML = '';
-                if (metadata?.attributes && Array.isArray(metadata.attributes) && metadata.attributes.length > 0) {
-                    metadata.attributes.forEach(attr => {
-                        const tag = document.createElement('span');
-                        tag.className = 'attr-tag';
-                        const val = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
-                        tag.innerHTML = `<strong>${attr.trait_type || 'Attribute'}</strong>: ${val}`;
-                        modalAttrs.appendChild(tag);
-                    });
-                } else {
-                    modalAttrs.innerHTML = '<span class="attr-tag">No static trait structures linked.</span>';
+            // ===== লোড হ্যান্ডেল =====
+            function handleLoad() {
+                let url = lottieUrlInput.value.trim();
+                if (!url) {
+                    statusText.textContent = '⚠️ দয়া করে একটি URL দিন!';
+                    statusText.className = 'status-text error';
+                    return;
                 }
 
-                const lottieUrl = metadata?.animation_url || metadata?.animationUrl || 'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json';
-                
-                currentModalData = { tokenId, metadata, imageUrl: verifiedImage, lottieUrl };
-
-                loadLottieAnimation(lottieUrl);
-
-                downloadBtn.disabled = false;
-                downloadBtn.innerHTML = '<span>⬇️</span> Download GIF';
-                downloadProgress.classList.remove('active');
-                dpBar.style.width = '0%';
-                isGenerating = false;
-
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeModal() {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                if (lottieInstance) {
-                    lottieInstance.destroy();
-                    lottieInstance = null;
+                if (!isValidUrl(url)) {
+                    statusText.textContent = '⚠️ ইনভ্যালিড URL!';
+                    statusText.className = 'status-text error';
+                    return;
                 }
-                if (timeRequestFrame) cancelAnimationFrame(timeRequestFrame);
-                isGenerating = false;
+
+                statusText.textContent = '⏳ লোড হচ্ছে...';
+                statusText.className = 'status-text loading';
+                loadLottieAnimation(url);
             }
 
-            modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-            document.getElementById('playBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.play(); statusText.textContent = '▶️ Vector active.'; } });
-            document.getElementById('pauseBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.pause(); statusText.textContent = '⏸️ Playback cached.'; } });
-            document.getElementById('stopBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.stop(); statusText.textContent = '⏹️ Stream reset.'; } });
-
-            async function downloadAsGif() {
+            // ===== GIF ডাউনলোড (টার্বো) =====
+            async function downloadGif() {
                 if (isGenerating) return;
-                if (!lottieInstance) {
-                    statusText.textContent = '⏳ Target engine vector parsing context incomplete...';
+                
+                if (!lottieInstance || !lottieInstance.isLoaded) {
+                    statusText.textContent = '⏳ অ্যানিমেশন লোড হওয়ার অপেক্ষা করুন...';
+                    statusText.className = 'status-text loading';
                     return;
                 }
 
                 isGenerating = true;
                 downloadBtn.disabled = true;
-                downloadBtn.innerHTML = '<span class="generating-spinner"></span> Packaging...';
-                downloadProgress.classList.add('active');
-                dpBar.style.width = '10%';
-                statusText.textContent = '⏳ Initializing Canvas processing matrix rules...';
+                downloadBtn.innerHTML = '<span class="generating-spinner"></span> জেনারেট করছি...';
+                progressContainer.classList.add('active');
+                progressFill.style.width = '0%';
+                progressText.textContent = '⏳ GIF তৈরি হচ্ছে...';
+                progressPercent.textContent = '0%';
+                statusText.textContent = '⏳ GIF তৈরি হচ্ছে (টার্বো মোড)...';
                 statusText.className = 'status-text loading';
+
+                const startGenTime = Date.now();
 
                 try {
                     const svgElement = lottieContainer.querySelector('svg');
-                    if (!svgElement) throw new Error('DOM reference to vector layer lost.');
+                    if (!svgElement) {
+                        throw new Error('SVG উপাদান পাওয়া যায়নি');
+                    }
 
+                    // SVG ক্লোন
                     const cloneSvg = svgElement.cloneNode(true);
                     cloneSvg.style.width = '400px';
                     cloneSvg.style.height = '400px';
+                    cloneSvg.style.position = 'fixed';
+                    cloneSvg.style.left = '-9999px';
+                    cloneSvg.style.top = '0';
                     cloneSvg.style.background = '#0a0c1a';
                     
                     const wrapper = document.createElement('div');
-                    wrapper.style.cssText = 'position:fixed; left:-9999px; top:0; width:400px; height:400px; background:#12142a; display:flex; align-items:center; justify-content:center; padding:20px;';
+                    wrapper.style.cssText = `
+                        position: fixed;
+                        left: -9999px;
+                        top: 0;
+                        width: 400px;
+                        height: 400px;
+                        background: #12142a;
+                        border-radius: 16px;
+                        overflow: hidden;
+                        border: 2px solid rgba(255, 215, 0, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 20px;
+                    `;
                     wrapper.appendChild(cloneSvg);
                     document.body.appendChild(wrapper);
 
-                    dpBar.style.width = '35%';
-                    statusText.textContent = '⏳ Fetching motion matrix states...';
+                    progressFill.style.width = '20%';
+                    progressPercent.textContent = '20%';
 
-                    // Capture Frame Alpha sequence
-                    const canvas1 = await html2canvas(wrapper, { scale: 1, useCORS: true, backgroundColor: '#12142a', logging: false });
-                    dpBar.style.width = '55%';
+                    // html2canvas
+                    const canvas = await html2canvas(wrapper, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: '#12142a',
+                        logging: false,
+                        width: 400,
+                        height: 400,
+                    });
 
-                    // Induce structural rotation shift to simulate vector progression array
-                    if (lottieInstance.goToAndStop) {
-                        lottieInstance.goToAndStop(Math.floor(lottieInstance.totalFrames / 2), true);
-                    }
-                    
-                    const canvas2 = await html2canvas(wrapper, { scale: 1, useCORS: true, backgroundColor: '#12142a', logging: false });
-                    document.body.removeChild(wrapper); // Safe termination execution position update
-                    
-                    if (lottieInstance.play) lottieInstance.play(); // Restore original workspace motion state
+                    wrapper.remove();
+                    progressFill.style.width = '40%';
+                    progressPercent.textContent = '40%';
 
-                    dpBar.style.width = '70%';
-                    statusText.textContent = '⏳ Encoding image compression payload blocks...';
-
+                    // GIF তৈরি
                     const gif = new GIF({
                         workers: 2,
                         quality: 10,
@@ -999,160 +670,164 @@
                         workerURL: 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'
                     });
 
-                    gif.addFrame(canvas1, { delay: 450 });
-                    gif.addFrame(canvas2, { delay: 450 });
-
-                    gif.on('progress', (p) => {
-                        dpBar.style.width = `${70 + (p * 25)}%`;
+                    // 3 ফ্রেম (স্মুথ এনিমেশন)
+                    gif.addFrame(canvas, { copy: true, delay: 300 });
+                    
+                    // দ্বিতীয় ফ্রেম
+                    progressFill.style.width = '55%';
+                    progressPercent.textContent = '55%';
+                    
+                    const canvas2 = await html2canvas(wrapper, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: '#12142a',
+                        logging: false,
+                        width: 400,
+                        height: 400,
                     });
+                    gif.addFrame(canvas2, { copy: true, delay: 300 });
 
-                    const blob = await new Promise((resolve, reject) => {
-                        gif.on('finished', (resultBlob) => resolve(resultBlob));
-                        gif.on('error', (err) => reject(err));
+                    progressFill.style.width = '70%';
+                    progressPercent.textContent = '70%';
+
+                    // তৃতীয় ফ্রেম
+                    const canvas3 = await html2canvas(wrapper, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: '#12142a',
+                        logging: false,
+                        width: 400,
+                        height: 400,
+                    });
+                    gif.addFrame(canvas3, { copy: true, delay: 300 });
+
+                    progressFill.style.width = '80%';
+                    progressPercent.textContent = '80%';
+
+                    // রেন্ডার
+                    await new Promise((resolve, reject) => {
+                        gif.on('progress', (p) => {
+                            const prog = 80 + (p * 18);
+                            progressFill.style.width = `${Math.min(prog, 99)}%`;
+                            progressPercent.textContent = `${Math.min(Math.round(prog), 99)}%`;
+                        });
+                        gif.on('finished', (blob) => {
+                            progressFill.style.width = '100%';
+                            progressPercent.textContent = '100%';
+                            resolve(blob);
+                        });
+                        gif.on('error', reject);
                         gif.render();
                     });
 
-                    dpBar.style.width = '100%';
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = `galaxy-asset-${currentModalData.tokenId}.gif`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    statusText.textContent = '✅ GIF processing successfully completed!';
-                    statusText.className = 'status-text success';
-                    downloadBtn.innerHTML = '✅ Dispatched!';
+                    const blob = gif._blob || await new Promise((resolve) => {
+                        gif.render();
+                        gif.on('finished', resolve);
+                    });
 
+                    // ডাউনলোড
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `lottie-animation.gif`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+                    const totalTime = Date.now() - startGenTime;
+                    statusText.textContent = `✅ GIF ডাউনলোড সম্পূর্ণ! (${totalTime}ms)`;
+                    statusText.className = 'status-text success';
+                    downloadBtn.innerHTML = '✅ ডাউনলোড হয়েছে!';
+                    
                     setTimeout(() => {
-                        downloadBtn.innerHTML = '<span>⬇️</span> Download GIF';
+                        downloadBtn.innerHTML = '⬇️ GIF ডাউনলোড';
                         downloadBtn.disabled = false;
-                        downloadProgress.classList.remove('active');
+                        progressContainer.classList.remove('active');
                         isGenerating = false;
                     }, 2000);
 
                 } catch (error) {
-                    console.error(error);
-                    statusText.textContent = '❌ Runtime compilation failed.';
+                    console.error('GIF তৈরি ব্যর্থ:', error);
+                    statusText.textContent = '❌ GIF তৈরি ব্যর্থ!';
                     statusText.className = 'status-text error';
-                    downloadBtn.innerHTML = '⚠️ Retry Action';
+                    downloadBtn.innerHTML = '⬇️ আবার চেষ্টা করুন';
                     downloadBtn.disabled = false;
+                    progressContainer.classList.remove('active');
                     isGenerating = false;
                 }
             }
 
-            downloadBtn.addEventListener('click', downloadAsGif);
-
-            function createCard(tokenId, metadata) {
-                const card = document.createElement('div');
-                card.className = 'nft-card';
-
-                const bgColor = metadata?.background_color;
-                card.style.background = (bgColor && isValidHexColor(bgColor)) ? `#${bgColor.replace('#', '')}` : '#12142a';
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'nft-image-wrapper';
-
-                const placeholder = document.createElement('div');
-                placeholder.className = 'placeholder';
-                const spinner = document.createElement('div');
-                spinner.className = 'spinner';
-                placeholder.appendChild(spinner);
-                
-                const label = document.createElement('span');
-                label.textContent = `#${tokenId}`;
-                placeholder.appendChild(label);
-                wrapper.appendChild(placeholder);
-
-                const img = document.createElement('img');
-                img.alt = metadata?.name || `Token Asset #${tokenId}`;
-                img.loading = 'lazy';
-                img.style.opacity = '0';
-                wrapper.appendChild(img);
-
-                img.onload = function() {
-                    placeholder.style.opacity = '0';
-                    this.style.opacity = '1';
-                    setTimeout(() => { placeholder.style.display = 'none'; }, 400);
-                };
-                
-                img.onerror = function() {
-                    placeholder.style.display = 'flex';
-                    placeholder.style.opacity = '1';
-                    this.style.opacity = '0';
-                    if (spinner) spinner.style.display = 'none';
-                    label.textContent = `⚠️ #${tokenId}`;
-                };
-
-                const imageUri = metadata?.image || metadata?.imageUrl || `${BASE_URI}${tokenId}`;
-                loadImage(img, imageUri);
-
-                card.appendChild(wrapper);
-
-                const info = document.createElement('div');
-                info.className = 'nft-info';
-
-                const name = document.createElement('div');
-                name.className = 'nft-name';
-                name.textContent = metadata?.name || `Asset #${tokenId}`;
-                info.appendChild(name);
-
-                const idBadge = document.createElement('div');
-                idBadge.className = 'nft-id';
-                idBadge.textContent = `#${tokenId}`;
-                info.appendChild(idBadge);
-
-                if (metadata?.attributes && Array.isArray(metadata.attributes) && metadata.attributes.length > 0) {
-                    const attrContainer = document.createElement('div');
-                    attrContainer.className = 'nft-attributes';
-                    metadata.attributes.slice(0, 3).forEach(attr => {
-                        const badge = document.createElement('span');
-                        badge.className = 'attr-badge';
-                        const internalVal = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
-                        badge.textContent = `${attr.trait_type || 'Trait'}: ${internalVal}`;
-                        attrContainer.appendChild(badge);
-                    });
-                    info.appendChild(attrContainer);
+            // ===== কন্ট্রোল =====
+            playBtn.addEventListener('click', () => {
+                if (lottieInstance) {
+                    lottieInstance.play();
+                    statusText.textContent = '▶️ প্লে হচ্ছে...';
+                    statusText.className = 'status-text';
                 }
-
-                card.appendChild(info);
-                card.addEventListener('click', () => openModal(tokenId, metadata, imageUri, card));
-                return card;
-            }
-
-            async function loadAllNFTs() {
-                TOTAL_COUNT.textContent = TOTAL_SUPPLY.toLocaleString();
-                GALLERY.innerHTML = '';
-                let loaded = 0;
-
-                for (let tokenId = 1; tokenId <= TOTAL_SUPPLY; tokenId++) {
-                    CURRENT_TOKEN.textContent = `#${tokenId}`;
-                    MAIN_STATUS_TEXT.textContent = `⏳ Syncing resource block #${tokenId}...`;
-
-                    const metadata = await fetchMetadata(tokenId);
-                    const card = createCard(tokenId, metadata);
-                    GALLERY.appendChild(card);
-
-                    loaded++;
-                    LOADED_COUNT.textContent = loaded.toLocaleString();
-
-                    const percent = Math.round((loaded / TOTAL_SUPPLY) * 100);
-                    PROGRESS_BAR.style.width = `${percent}%`;
-                    PERCENTAGE.textContent = `${percent}%`;
-
-                    if (loaded % 25 === 0) {
-                        await new Promise(resolve => setTimeout(resolve, 10));
-                    }
-                }
-
-                MAIN_STATUS_TEXT.textContent = '✅ Environment completely mapped!';
-            }
-
-            loadAllNFTs().catch(err => {
-                console.error(err);
-                MAIN_STATUS_TEXT.textContent = '⚠️ Critical exception discovered in resource loop sequence.';
             });
+
+            pauseBtn.addEventListener('click', () => {
+                if (lottieInstance) {
+                    lottieInstance.pause();
+                    statusText.textContent = '⏸️ পজ করা হয়েছে';
+                    statusText.className = 'status-text';
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                if (lottieInstance) {
+                    lottieInstance.stop();
+                    statusText.textContent = '⏹️ স্টপ করা হয়েছে';
+                    statusText.className = 'status-text';
+                }
+            });
+
+            downloadBtn.addEventListener('click', downloadGif);
+
+            clearBtn.addEventListener('click', () => {
+                if (lottieInstance) {
+                    lottieInstance.destroy();
+                    lottieInstance = null;
+                }
+                lottieContainer.innerHTML = `
+                    <div class="placeholder">
+                        <span class="icon">🎬</span>
+                        <h3>Lottie অ্যানিমেশন এখানে দেখাবে</h3>
+                        <p>উপরে URL দিন এবং "লোড করুন" ক্লিক করুন</p>
+                    </div>
+                `;
+                statusText.textContent = '✨ ক্লিয়ার করা হয়েছে';
+                statusText.className = 'status-text';
+                timeDisplay.textContent = '⏱️ 0ms';
+                progressContainer.classList.remove('active');
+                downloadBtn.innerHTML = '⬇️ GIF ডাউনলোড';
+                downloadBtn.disabled = false;
+                isGenerating = false;
+            });
+
+            // ===== ইভেন্ট =====
+            loadBtn.addEventListener('click', handleLoad);
+            lottieUrlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleLoad();
+            });
+
+            // ===== প্রিজেট =====
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const url = btn.dataset.url;
+                    lottieUrlInput.value = url;
+                    loadLottieAnimation(url);
+                });
+            });
+
+            // ===== ডিফল্ট লোড =====
+            setTimeout(() => {
+                const defaultUrl = lottieUrlInput.value;
+                if (defaultUrl && isValidUrl(defaultUrl)) {
+                    loadLottieAnimation(defaultUrl);
+                }
+            }, 500);
 
         })();
     </script>
