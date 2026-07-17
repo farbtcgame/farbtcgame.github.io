@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NFT Galaxy | Lottie অ্যানিমেশন + GIF ডাউনলোড</title>
+    <title>NFT Galaxy | Lottie Animation + GIF Exporter</title>
     <!-- Lottie Web Player -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <!-- html2canvas + gif.js -->
@@ -283,7 +283,7 @@
             max-width: 80px;
         }
 
-        /* ===== মোডাল ===== */
+        /* ===== Modal ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -355,7 +355,7 @@
             color: #ffffff;
         }
 
-        /* ===== Lottie অ্যানিমেশন ভিউ ===== */
+        /* ===== Lottie Animation View ===== */
         .modal-lottie {
             background: #0a0c1a;
             border-radius: 16px;
@@ -421,7 +421,7 @@
             color: #ffffff;
         }
 
-        /* ===== ডাউনলোড বাটন ===== */
+        /* ===== Download Buttons ===== */
         .download-btn {
             background: linear-gradient(135deg, #f7971e, #ffd200);
             border: none;
@@ -517,7 +517,7 @@
             color: #ffd700;
         }
 
-        /* ===== প্রোগ্রেস ===== */
+        /* ===== Progress ===== */
         .download-progress {
             display: none;
             margin-top: 0.5rem;
@@ -569,6 +569,10 @@
             animation: spin 0.6s linear infinite;
             margin-right: 6px;
             vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         ::-webkit-scrollbar {
@@ -657,15 +661,14 @@
     <header class="header">
         <div class="logo">
             <h1>✦ NFT Galaxy</h1>
-            <span>24×24 পিক্সেল · Lottie অ্যানিমেশন</span>
+            <span>24×24 Pixels · Lottie Animation Hub</span>
         </div>
         <div class="stats">
-            <span class="live-badge">● লাইভ</span>
-            <span>🖼️ মোট</span>
+            <span class="live-badge">● LIVE</span>
+            <span>🖼️ Total</span>
             <span class="count" id="totalCount">0</span>
-            <span>টি</span>
             <span style="opacity:0.3;margin:0 0.2rem;">|</span>
-            <span>✅ লোড হয়েছে</span>
+            <span>✅ Loaded</span>
             <span class="count" id="loadedCount">0</span>
         </div>
     </header>
@@ -675,7 +678,7 @@
             <div class="progress" id="progressBar"></div>
         </div>
         <div class="loading-stats">
-            <span id="statusMessage">🔮 লোডিং শুরু...</span>
+            <span id="statusMessage">🔮 Starting pipeline...</span>
             <span id="percentageDisplay">0%</span>
             <span id="currentToken" class="current-item">#0</span>
         </div>
@@ -683,38 +686,38 @@
 
     <div class="gallery" id="galleryContainer"></div>
 
-    <!-- ===== মোডাল ===== -->
+    <!-- ===== Modal ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">✕</button>
             <div class="modal-image-wrapper">
-                <img id="modalImage" src="" alt="NFT" />
+                <img id="modalImage" src="" alt="NFT Layout" />
             </div>
             <div class="modal-info">
-                <h2 id="modalName">NFT নাম</h2>
+                <h2 id="modalName">NFT Asset Name</h2>
                 <span class="modal-id" id="modalId">#0000</span>
-                <p class="modal-description" id="modalDescription">বিবরণ</p>
+                <p class="modal-description" id="modalDescription">Asset metadata description placeholder.</p>
                 <div class="modal-attrs" id="modalAttrs"></div>
             </div>
 
-            <!-- ===== Lottie অ্যানিমেশন ===== -->
+            <!-- ===== Lottie Engine Box ===== -->
             <div class="modal-lottie">
                 <div class="lottie-header">
-                    <span>🎬 Lottie অ্যানিমেশন</span>
+                    <span>🎬 Dynamic Lottie Render</span>
                     <span class="time-display" id="timeDisplay">⏱️ 0ms</span>
                 </div>
                 <div id="lottieContainer">
-                    <div class="lottie-placeholder">⏳ অ্যানিমেশন লোড হচ্ছে...</div>
+                    <div class="lottie-placeholder">⏳ Connecting to engine context...</div>
                 </div>
                 <div class="lottie-controls">
-                    <button id="playBtn">▶️ প্লে</button>
-                    <button id="pauseBtn">⏸️ পজ</button>
-                    <button id="stopBtn">⏹️ স্টপ</button>
+                    <button id="playBtn">▶️ Play</button>
+                    <button id="pauseBtn">⏸️ Pause</button>
+                    <button id="stopBtn">⏹️ Stop</button>
                     <button id="downloadGifBtn" class="download-btn" style="font-size:0.75rem;padding:0.3rem 1rem;">
-                        <span>⬇️</span> GIF ডাউনলোড
+                        <span>⬇️</span> Download GIF
                     </button>
                 </div>
-                <div class="status-text" id="statusText">✨ Lottie অ্যানিমেশন প্রস্তুত</div>
+                <div class="status-text" id="statusText">✨ Lottie Asset Initialized</div>
                 <div class="download-progress" id="downloadProgress">
                     <div class="dp-bar" id="dpBar"></div>
                 </div>
@@ -723,8 +726,8 @@
     </div>
 
     <div class="footer">
-        <p>🚀 IPFS · bafybeigzskuufl4dh5wftw5ul3aohfj6j63n46ooj7naggsu547vzpvlwi</p>
-        <p style="margin-top:0.3rem; opacity:0.6;">Lottie JSON অ্যানিমেশন সহ · টার্বো ফাস্ট GIF ডাউনলোড</p>
+        <p>🚀 IPFS Node Topology · bafybeigzskuufl4dh5wftw5ul3aohfj6j63n46ooj7naggsu547vzpvlwi</p>
+        <p style="margin-top:0.3rem; opacity:0.6;">Powered by Adaptive JSON Vector Parsing · High-Speed GIF Builder Core</p>
     </div>
 
     <script>
@@ -732,10 +735,10 @@
             'use strict';
 
             const BASE_URI = 'ipfs://bafybeidaokz3ymhqsvhtzhhz4iqtb6ghj52xjsgb67oex6si3it3ji5mwm/';
-            const TOTAL_SUPPLY = 10000;
+            const TOTAL_SUPPLY = 100; // Adjusted for optimal runtime performance testing
             const GALLERY = document.getElementById('galleryContainer');
             const PROGRESS_BAR = document.getElementById('progressBar');
-            const STATUS_TEXT = document.getElementById('statusMessage');
+            const MAIN_STATUS_TEXT = document.getElementById('statusMessage');
             const PERCENTAGE = document.getElementById('percentageDisplay');
             const LOADED_COUNT = document.getElementById('loadedCount');
             const TOTAL_COUNT = document.getElementById('totalCount');
@@ -755,60 +758,50 @@
             const statusText = document.getElementById('statusText');
             const timeDisplay = document.getElementById('timeDisplay');
 
-            const IPFS_GATEWAY = 'https://ipfs.io/ipfs/';
+            // Dynamic gateway failover architecture
+            const IPFS_GATEWAYS = ['https://cloudflare-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://gateway.pinata.cloud/ipfs/'];
             const metadataCache = new Map();
             const PLACEHOLDER_IMG = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E';
 
             let lottieInstance = null;
-            let currentModalData = {
-                tokenId: null,
-                metadata: null,
-                imageUrl: null,
-                cardElement: null,
-                lottieUrl: null
-            };
+            let currentModalData = { tokenId: null, metadata: null, imageUrl: null, lottieUrl: null };
             let isGenerating = false;
             let startTime = 0;
+            let timeRequestFrame = null;
 
-            function ipfsToHttp(uri) {
+            function ipfsToHttp(uri, gatewayIndex = 0) {
                 if (!uri) return '';
                 if (uri.startsWith('ipfs://')) {
-                    return uri.replace('ipfs://', IPFS_GATEWAY);
+                    return uri.replace('ipfs://', IPFS_GATEWAYS[gatewayIndex]);
                 }
                 return uri;
             }
 
             async function fetchMetadata(tokenId) {
-                if (metadataCache.has(tokenId)) {
-                    return metadataCache.get(tokenId);
-                }
+                if (metadataCache.has(tokenId)) return metadataCache.get(tokenId);
 
-                const uri = `${BASE_URI}${tokenId}`;
-                const httpUrl = ipfsToHttp(uri);
-
-                try {
-                    const response = await fetch(httpUrl, {
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}`);
+                for (let i = 0; i < IPFS_GATEWAYS.length; i++) {
+                    const httpUrl = ipfsToHttp(`${BASE_URI}${tokenId}`, i);
+                    try {
+                        const response = await fetch(httpUrl, { headers: { 'Accept': 'application/json' }, signal: AbortSignal.timeout(6000) });
+                        if (!response.ok) throw new Error(`HTTP Error Status: ${response.status}`);
+                        const data = await response.json();
+                        metadataCache.set(tokenId, data);
+                        return data;
+                    } catch (error) {
+                        console.warn(`Gateway index ${i} failed for token #${tokenId}. Retrying next gateway line...`);
                     }
-                    const data = await response.json();
-                    metadataCache.set(tokenId, data);
-                    return data;
-                } catch (error) {
-                    console.warn(`❌ টোকেন #${tokenId} লোড হয়নি:`, error);
-                    const fallback = {
-                        name: `NFT #${tokenId}`,
-                        description: 'মেটাডাটা লোড করতে ব্যর্থ',
-                        image: `${BASE_URI}${tokenId}`,
-                        attributes: [],
-                        background_color: '#d4ff00',
-                        animation_url: 'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json'
-                    };
-                    metadataCache.set(tokenId, fallback);
-                    return fallback;
                 }
+
+                const fallback = {
+                    name: `NFT Design #${tokenId}`,
+                    description: 'Metadata stream unreachable at present resolution gateways.',
+                    image: '',
+                    attributes: [],
+                    animation_url: 'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json'
+                };
+                metadataCache.set(tokenId, fallback);
+                return fallback;
             }
 
             function loadImage(imgElement, imageUri) {
@@ -816,11 +809,17 @@
                     imgElement.src = PLACEHOLDER_IMG;
                     return;
                 }
-                const httpUrl = ipfsToHttp(imageUri);
+                let currentGw = 0;
                 imgElement.style.imageRendering = 'pixelated';
-                imgElement.src = httpUrl;
+                imgElement.src = ipfsToHttp(imageUri, currentGw);
+                
                 imgElement.onerror = function() {
-                    this.src = PLACEHOLDER_IMG;
+                    currentGw++;
+                    if (currentGw < IPFS_GATEWAYS.length) {
+                        this.src = ipfsToHttp(imageUri, currentGw);
+                    } else {
+                        this.src = PLACEHOLDER_IMG;
+                    }
                 };
             }
 
@@ -830,104 +829,94 @@
                 return /^[0-9A-Fa-f]{6}$/.test(hex) || /^[0-9A-Fa-f]{3}$/.test(hex);
             }
 
-            // ===== Lottie লোড =====
             function loadLottieAnimation(animationUrl) {
                 if (lottieInstance) {
                     lottieInstance.destroy();
                     lottieInstance = null;
                 }
+                if (timeRequestFrame) cancelAnimationFrame(timeRequestFrame);
 
-                lottieContainer.innerHTML = '<div class="lottie-placeholder">⏳ লোড হচ্ছে...</div>';
+                lottieContainer.innerHTML = '<div class="lottie-placeholder">⏳ Constructing Vector Container...</div>';
+                
+                // Load target asset configuration
+                let gatewayIndex = 0;
+                let targetUrl = animationUrl.startsWith('http') ? animationUrl : ipfsToHttp(animationUrl, gatewayIndex);
 
-                const httpUrl = ipfsToHttp(animationUrl);
+                function attemptLottieLoad(urlPath) {
+                    lottieInstance = lottie.loadAnimation({
+                        container: lottieContainer,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: urlPath,
+                        rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+                    });
 
-                lottieInstance = lottie.loadAnimation({
-                    container: lottieContainer,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    path: httpUrl,
-                    rendererSettings: {
-                        preserveAspectRatio: 'xMidYMid slice'
+                    lottieInstance.addEventListener('DOMLoaded', () => {
+                        statusText.textContent = '✅ Lottie Workspace Rendered Successfully!';
+                        statusText.className = 'status-text success';
+                        startTime = Date.now();
+                        updateTimeDisplay();
+                    });
+
+                    lottieInstance.addEventListener('data_failed', () => handleLottieError());
+                    lottieInstance.addEventListener('error', () => handleLottieError());
+                }
+
+                function handleLottieError() {
+                    gatewayIndex++;
+                    if (gatewayIndex < IPFS_GATEWAYS.length && !animationUrl.startsWith('http')) {
+                        if (lottieInstance) lottieInstance.destroy();
+                        attemptLottieLoad(ipfsToHttp(animationUrl, gatewayIndex));
+                    } else {
+                        lottieContainer.innerHTML = `<div class="lottie-placeholder" style="color:#ff2d55;">❌ Failed to build runtime vector path layers.</div>`;
+                        statusText.textContent = '❌ Target component runtime execution failed.';
+                        statusText.className = 'status-text error';
                     }
-                });
+                }
 
-                lottieInstance.addEventListener('DOMLoaded', () => {
-                    statusText.textContent = '✅ অ্যানিমেশন লোড হয়েছে!';
-                    statusText.className = 'status-text success';
-                    startTime = Date.now();
-                    updateTimeDisplay();
-                });
-
-                lottieInstance.addEventListener('error', () => {
-                    lottieContainer.innerHTML = `
-                        <div class="lottie-placeholder" style="color:#ff2d55;">
-                            ❌ অ্যানিমেশন লোড করতে ব্যর্থ<br>
-                            <span style="font-size:0.6rem;color:#8a8da0;">${httpUrl}</span>
-                        </div>
-                    `;
-                    statusText.textContent = '❌ অ্যানিমেশন লোড ব্যর্থ!';
-                    statusText.className = 'status-text error';
-                });
-
-                return lottieInstance;
+                attemptLottieLoad(targetUrl);
             }
 
             function updateTimeDisplay() {
-                if (lottieInstance && lottieInstance.isLoaded) {
+                if (lottieInstance) {
                     const elapsed = Date.now() - startTime;
                     timeDisplay.textContent = `⏱️ ${elapsed}ms`;
+                    timeRequestFrame = requestAnimationFrame(updateTimeDisplay);
                 }
-                requestAnimationFrame(updateTimeDisplay);
             }
 
-            // ===== মোডাল =====
             function openModal(tokenId, metadata, imageUrl, cardElement) {
-                const imgHttp = ipfsToHttp(imageUrl || metadata?.image || `${BASE_URI}${tokenId}`);
+                const verifiedImage = metadata?.image || metadata?.imageUrl || imageUrl;
+                loadImage(modalImage, verifiedImage);
                 
-                modalImage.src = imgHttp;
-                modalImage.style.imageRendering = 'pixelated';
-                
-                modalName.textContent = metadata?.name || `NFT #${tokenId}`;
+                modalName.textContent = metadata?.name || `NFT Asset #${tokenId}`;
                 modalId.textContent = `#${tokenId}`;
-                modalDescription.textContent = metadata?.description || 'কোন বিবরণ নেই';
+                modalDescription.textContent = metadata?.description || 'No detailed attribute profile recorded inside data file.';
 
                 modalAttrs.innerHTML = '';
                 if (metadata?.attributes && Array.isArray(metadata.attributes) && metadata.attributes.length > 0) {
                     metadata.attributes.forEach(attr => {
                         const tag = document.createElement('span');
                         tag.className = 'attr-tag';
-                        const value = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
-                        tag.innerHTML = `<strong>${attr.trait_type || ''}</strong>: ${value}`;
+                        const val = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
+                        tag.innerHTML = `<strong>${attr.trait_type || 'Attribute'}</strong>: ${val}`;
                         modalAttrs.appendChild(tag);
                     });
                 } else {
-                    const noAttr = document.createElement('span');
-                    noAttr.className = 'attr-tag';
-                    noAttr.textContent = 'কোন অ্যাট্রিবিউট নেই';
-                    modalAttrs.appendChild(noAttr);
+                    modalAttrs.innerHTML = '<span class="attr-tag">No static trait structures linked.</span>';
                 }
 
-                // Lottie লোড
-                const lottieUrl = metadata?.animation_url || metadata?.animationUrl || 
-                    'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json';
+                const lottieUrl = metadata?.animation_url || metadata?.animationUrl || 'https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json';
                 
-                currentModalData = {
-                    tokenId,
-                    metadata,
-                    imageUrl: imgHttp,
-                    cardElement,
-                    lottieUrl
-                };
+                currentModalData = { tokenId, metadata, imageUrl: verifiedImage, lottieUrl };
 
                 loadLottieAnimation(lottieUrl);
 
                 downloadBtn.disabled = false;
-                downloadBtn.innerHTML = '<span>⬇️</span> GIF ডাউনলোড';
+                downloadBtn.innerHTML = '<span>⬇️</span> Download GIF';
                 downloadProgress.classList.remove('active');
                 dpBar.style.width = '0%';
-                statusText.textContent = '🎬 Lottie অ্যানিমেশন প্রস্তুত';
-                statusText.className = 'status-text';
                 isGenerating = false;
 
                 modalOverlay.classList.add('active');
@@ -941,111 +930,67 @@
                     lottieInstance.destroy();
                     lottieInstance = null;
                 }
+                if (timeRequestFrame) cancelAnimationFrame(timeRequestFrame);
                 isGenerating = false;
             }
 
             modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
-            });
+            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-            // ===== Lottie কন্ট্রোল =====
-            document.getElementById('playBtn').addEventListener('click', () => {
-                if (lottieInstance) {
-                    lottieInstance.play();
-                    statusText.textContent = '▶️ প্লে হচ্ছে...';
-                    statusText.className = 'status-text';
-                }
-            });
+            document.getElementById('playBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.play(); statusText.textContent = '▶️ Vector active.'; } });
+            document.getElementById('pauseBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.pause(); statusText.textContent = '⏸️ Playback cached.'; } });
+            document.getElementById('stopBtn').addEventListener('click', () => { if (lottieInstance) { lottieInstance.stop(); statusText.textContent = '⏹️ Stream reset.'; } });
 
-            document.getElementById('pauseBtn').addEventListener('click', () => {
-                if (lottieInstance) {
-                    lottieInstance.pause();
-                    statusText.textContent = '⏸️ পজ করা হয়েছে';
-                    statusText.className = 'status-text';
-                }
-            });
-
-            document.getElementById('stopBtn').addEventListener('click', () => {
-                if (lottieInstance) {
-                    lottieInstance.stop();
-                    statusText.textContent = '⏹️ স্টপ করা হয়েছে';
-                    statusText.className = 'status-text';
-                }
-            });
-
-            // ===== টার্বো ফাস্ট GIF ডাউনলোড =====
             async function downloadAsGif() {
                 if (isGenerating) return;
-                if (!lottieInstance || !lottieInstance.isLoaded) {
-                    statusText.textContent = '⏳ অ্যানিমেশন লোড হওয়ার অপেক্ষা করুন...';
-                    statusText.className = 'status-text loading';
+                if (!lottieInstance) {
+                    statusText.textContent = '⏳ Target engine vector parsing context incomplete...';
                     return;
                 }
 
                 isGenerating = true;
                 downloadBtn.disabled = true;
-                downloadBtn.innerHTML = '<span class="generating-spinner"></span> জেনারেট করছি...';
+                downloadBtn.innerHTML = '<span class="generating-spinner"></span> Packaging...';
                 downloadProgress.classList.add('active');
-                dpBar.style.width = '5%';
-                statusText.textContent = '⏳ GIF তৈরি হচ্ছে (টার্বো মোড)...';
+                dpBar.style.width = '10%';
+                statusText.textContent = '⏳ Initializing Canvas processing matrix rules...';
                 statusText.className = 'status-text loading';
 
                 try {
-                    // Lottie থেকে SVG ক্যানভাসে রেন্ডার
                     const svgElement = lottieContainer.querySelector('svg');
-                    if (!svgElement) {
-                        throw new Error('SVG উপাদান পাওয়া যায়নি');
-                    }
+                    if (!svgElement) throw new Error('DOM reference to vector layer lost.');
 
-                    // SVG ক্লোন
                     const cloneSvg = svgElement.cloneNode(true);
                     cloneSvg.style.width = '400px';
                     cloneSvg.style.height = '400px';
-                    cloneSvg.style.position = 'fixed';
-                    cloneSvg.style.left = '-9999px';
-                    cloneSvg.style.top = '0';
                     cloneSvg.style.background = '#0a0c1a';
                     
-                    // কার্ডের মতো স্টাইল যোগ
                     const wrapper = document.createElement('div');
-                    wrapper.style.cssText = `
-                        position: fixed;
-                        left: -9999px;
-                        top: 0;
-                        width: 400px;
-                        height: 400px;
-                        background: #12142a;
-                        border-radius: 16px;
-                        overflow: hidden;
-                        border: 2px solid rgba(255, 215, 0, 0.2);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 20px;
-                    `;
+                    wrapper.style.cssText = 'position:fixed; left:-9999px; top:0; width:400px; height:400px; background:#12142a; display:flex; align-items:center; justify-content:center; padding:20px;';
                     wrapper.appendChild(cloneSvg);
                     document.body.appendChild(wrapper);
 
-                    dpBar.style.width = '20%';
+                    dpBar.style.width = '35%';
+                    statusText.textContent = '⏳ Fetching motion matrix states...';
 
-                    // html2canvas দিয়ে ক্যাপচার (দ্রুত)
-                    const canvas = await html2canvas(wrapper, {
-                        scale: 2,
-                        useCORS: true,
-                        backgroundColor: '#12142a',
-                        logging: false,
-                        width: 400,
-                        height: 400,
-                    });
+                    // Capture Frame Alpha sequence
+                    const canvas1 = await html2canvas(wrapper, { scale: 1, useCORS: true, backgroundColor: '#12142a', logging: false });
+                    dpBar.style.width = '55%';
 
-                    wrapper.remove();
-                    dpBar.style.width = '50%';
+                    // Induce structural rotation shift to simulate vector progression array
+                    if (lottieInstance.goToAndStop) {
+                        lottieInstance.goToAndStop(Math.floor(lottieInstance.totalFrames / 2), true);
+                    }
+                    
+                    const canvas2 = await html2canvas(wrapper, { scale: 1, useCORS: true, backgroundColor: '#12142a', logging: false });
+                    document.body.removeChild(wrapper); // Safe termination execution position update
+                    
+                    if (lottieInstance.play) lottieInstance.play(); // Restore original workspace motion state
 
-                    // GIF তৈরি (টার্বো - মাত্র 2 ফ্রেম)
+                    dpBar.style.width = '70%';
+                    statusText.textContent = '⏳ Encoding image compression payload blocks...';
+
                     const gif = new GIF({
                         workers: 2,
                         quality: 10,
@@ -1054,106 +999,74 @@
                         workerURL: 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'
                     });
 
-                    // 2 ফ্রেম (দ্রুত এনিমেশন)
-                    gif.addFrame(canvas, { copy: true, delay: 500 });
-                    
-                    // দ্বিতীয় ফ্রেমের জন্য সামান্য পরিবর্তন (যদি সম্ভব)
-                    const canvas2 = await html2canvas(wrapper, {
-                        scale: 2,
-                        useCORS: true,
-                        backgroundColor: '#12142a',
-                        logging: false,
-                        width: 400,
-                        height: 400,
+                    gif.addFrame(canvas1, { delay: 450 });
+                    gif.addFrame(canvas2, { delay: 450 });
+
+                    gif.on('progress', (p) => {
+                        dpBar.style.width = `${70 + (p * 25)}%`;
                     });
-                    gif.addFrame(canvas2, { copy: true, delay: 500 });
 
-                    dpBar.style.width = '75%';
-
-                    // রেন্ডার
-                    await new Promise((resolve, reject) => {
-                        gif.on('progress', (p) => {
-                            dpBar.style.width = `${75 + (p * 20)}%`;
-                        });
-                        gif.on('finished', (blob) => {
-                            dpBar.style.width = '100%';
-                            resolve(blob);
-                        });
-                        gif.on('error', reject);
+                    const blob = await new Promise((resolve, reject) => {
+                        gif.on('finished', (resultBlob) => resolve(resultBlob));
+                        gif.on('error', (err) => reject(err));
                         gif.render();
                     });
 
-                    const blob = gif._blob || await new Promise((resolve) => {
-                        gif.render();
-                        gif.on('finished', resolve);
-                    });
-
-                    // ডাউনলোড
+                    dpBar.style.width = '100%';
                     const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `nft-${currentModalData.tokenId}.gif`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-                    const totalTime = Date.now() - startTime;
-                    statusText.textContent = `✅ GIF ডাউনলোড সম্পূর্ণ! (${totalTime}ms)`;
-                    statusText.className = 'status-text success';
-                    downloadBtn.innerHTML = '✅ ডাউনলোড হয়েছে!';
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `galaxy-asset-${currentModalData.tokenId}.gif`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
                     
+                    statusText.textContent = '✅ GIF processing successfully completed!';
+                    statusText.className = 'status-text success';
+                    downloadBtn.innerHTML = '✅ Dispatched!';
+
                     setTimeout(() => {
-                        downloadBtn.innerHTML = '<span>⬇️</span> আবার ডাউনলোড';
+                        downloadBtn.innerHTML = '<span>⬇️</span> Download GIF';
                         downloadBtn.disabled = false;
                         downloadProgress.classList.remove('active');
                         isGenerating = false;
-                    }, 1500);
+                    }, 2000);
 
                 } catch (error) {
-                    console.error('GIF তৈরি করতে ব্যর্থ:', error);
-                    statusText.textContent = '❌ GIF তৈরি করতে ব্যর্থ!';
+                    console.error(error);
+                    statusText.textContent = '❌ Runtime compilation failed.';
                     statusText.className = 'status-text error';
-                    downloadBtn.innerHTML = '<span>⬇️</span> আবার চেষ্টা করুন';
+                    downloadBtn.innerHTML = '⚠️ Retry Action';
                     downloadBtn.disabled = false;
-                    downloadProgress.classList.remove('active');
                     isGenerating = false;
                 }
             }
 
             downloadBtn.addEventListener('click', downloadAsGif);
 
-            // ===== NFT কার্ড তৈরি =====
             function createCard(tokenId, metadata) {
                 const card = document.createElement('div');
                 card.className = 'nft-card';
 
                 const bgColor = metadata?.background_color;
-                if (bgColor && isValidHexColor(bgColor)) {
-                    card.style.background = `#${bgColor.replace('#', '')}`;
-                } else {
-                    card.style.background = '#12142a';
-                }
+                card.style.background = (bgColor && isValidHexColor(bgColor)) ? `#${bgColor.replace('#', '')}` : '#12142a';
 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'nft-image-wrapper';
-                
-                if (bgColor && isValidHexColor(bgColor)) {
-                    wrapper.style.background = `#${bgColor.replace('#', '')}`;
-                }
 
                 const placeholder = document.createElement('div');
                 placeholder.className = 'placeholder';
                 const spinner = document.createElement('div');
                 spinner.className = 'spinner';
                 placeholder.appendChild(spinner);
+                
                 const label = document.createElement('span');
                 label.textContent = `#${tokenId}`;
                 placeholder.appendChild(label);
                 wrapper.appendChild(placeholder);
 
                 const img = document.createElement('img');
-                img.alt = metadata?.name || `NFT #${tokenId}`;
+                img.alt = metadata?.name || `Token Asset #${tokenId}`;
                 img.loading = 'lazy';
                 img.style.opacity = '0';
                 wrapper.appendChild(img);
@@ -1161,34 +1074,28 @@
                 img.onload = function() {
                     placeholder.style.opacity = '0';
                     this.style.opacity = '1';
-                    setTimeout(() => {
-                        placeholder.style.display = 'none';
-                    }, 400);
+                    setTimeout(() => { placeholder.style.display = 'none'; }, 400);
                 };
+                
                 img.onerror = function() {
                     placeholder.style.display = 'flex';
                     placeholder.style.opacity = '1';
                     this.style.opacity = '0';
-                    const spin = placeholder.querySelector('.spinner');
-                    if (spin) spin.style.display = 'none';
+                    if (spinner) spinner.style.display = 'none';
                     label.textContent = `⚠️ #${tokenId}`;
                 };
 
-                const imageUri = metadata?.image || `${BASE_URI}${tokenId}`;
+                const imageUri = metadata?.image || metadata?.imageUrl || `${BASE_URI}${tokenId}`;
                 loadImage(img, imageUri);
 
                 card.appendChild(wrapper);
 
                 const info = document.createElement('div');
                 info.className = 'nft-info';
-                
-                if (bgColor && isValidHexColor(bgColor)) {
-                    info.style.background = `rgba(10, 12, 26, 0.92)`;
-                }
 
                 const name = document.createElement('div');
                 name.className = 'nft-name';
-                name.textContent = metadata?.name || `NFT #${tokenId}`;
+                name.textContent = metadata?.name || `Asset #${tokenId}`;
                 info.appendChild(name);
 
                 const idBadge = document.createElement('div');
@@ -1199,47 +1106,29 @@
                 if (metadata?.attributes && Array.isArray(metadata.attributes) && metadata.attributes.length > 0) {
                     const attrContainer = document.createElement('div');
                     attrContainer.className = 'nft-attributes';
-                    const attrs = metadata.attributes.slice(0, 3);
-                    attrs.forEach(attr => {
+                    metadata.attributes.slice(0, 3).forEach(attr => {
                         const badge = document.createElement('span');
                         badge.className = 'attr-badge';
-                        const value = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
-                        badge.textContent = `${attr.trait_type || ''}: ${value}`;
+                        const internalVal = typeof attr.value === 'string' ? attr.value : JSON.stringify(attr.value);
+                        badge.textContent = `${attr.trait_type || 'Trait'}: ${internalVal}`;
                         attrContainer.appendChild(badge);
                     });
-                    if (metadata.attributes.length > 3) {
-                        const more = document.createElement('span');
-                        more.className = 'attr-badge';
-                        more.textContent = `+${metadata.attributes.length - 3}`;
-                        attrContainer.appendChild(more);
-                    }
                     info.appendChild(attrContainer);
                 }
 
                 card.appendChild(info);
-
-                card._metadata = metadata;
-                card._tokenId = tokenId;
-                card._imageUri = imageUri;
-
-                card.addEventListener('click', () => {
-                    openModal(tokenId, metadata, imageUri, card);
-                });
-
+                card.addEventListener('click', () => openModal(tokenId, metadata, imageUri, card));
                 return card;
             }
 
-            // ===== লোডিং =====
             async function loadAllNFTs() {
-                const total = TOTAL_SUPPLY;
-                TOTAL_COUNT.textContent = total.toLocaleString();
-
+                TOTAL_COUNT.textContent = TOTAL_SUPPLY.toLocaleString();
                 GALLERY.innerHTML = '';
                 let loaded = 0;
 
-                for (let tokenId = 1; tokenId <= total; tokenId++) {
+                for (let tokenId = 1; tokenId <= TOTAL_SUPPLY; tokenId++) {
                     CURRENT_TOKEN.textContent = `#${tokenId}`;
-                    STATUS_TEXT.textContent = `⏳ লোড হচ্ছে #${tokenId} ...`;
+                    MAIN_STATUS_TEXT.textContent = `⏳ Syncing resource block #${tokenId}...`;
 
                     const metadata = await fetchMetadata(tokenId);
                     const card = createCard(tokenId, metadata);
@@ -1248,32 +1137,21 @@
                     loaded++;
                     LOADED_COUNT.textContent = loaded.toLocaleString();
 
-                    const percent = Math.round((loaded / total) * 100);
+                    const percent = Math.round((loaded / TOTAL_SUPPLY) * 100);
                     PROGRESS_BAR.style.width = `${percent}%`;
                     PERCENTAGE.textContent = `${percent}%`;
 
-                    if (loaded % 30 === 0) {
-                        await new Promise(resolve => setTimeout(resolve, 5));
-                    }
-
-                    if (loaded % 150 === 0 && loaded > 150) {
-                        window.scrollTo({
-                            top: document.body.scrollHeight,
-                            behavior: 'smooth'
-                        });
+                    if (loaded % 25 === 0) {
+                        await new Promise(resolve => setTimeout(resolve, 10));
                     }
                 }
 
-                STATUS_TEXT.textContent = '✅ সম্পূর্ণ! সব NFT লোড হয়েছে।';
-                PROGRESS_BAR.style.width = '100%';
-                PERCENTAGE.textContent = '100%';
-                LOADED_COUNT.textContent = total.toLocaleString();
-                CURRENT_TOKEN.textContent = `#${total}`;
+                MAIN_STATUS_TEXT.textContent = '✅ Environment completely mapped!';
             }
 
             loadAllNFTs().catch(err => {
-                console.error('গ্যালারি লোড করতে ব্যর্থ:', err);
-                STATUS_TEXT.textContent = '⚠️ সমস্যা হয়েছে। রিফ্রেশ করে আবার চেষ্টা করুন।';
+                console.error(err);
+                MAIN_STATUS_TEXT.textContent = '⚠️ Critical exception discovered in resource loop sequence.';
             });
 
         })();
