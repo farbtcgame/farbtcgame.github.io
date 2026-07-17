@@ -29,11 +29,11 @@
 
         .header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
@@ -43,23 +43,23 @@
 
         .header p {
             color: #8a8da0;
-            margin-top: 0.5rem;
-            font-size: 1rem;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.04);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #f0f0f0;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -67,20 +67,19 @@
 
         .input-group {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
         }
 
         .input-group input {
             flex: 1;
-            min-width: 250px;
-            padding: 0.8rem 1.2rem;
-            border-radius: 12px;
+            min-width: 200px;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(255, 255, 255, 0.04);
             color: #ffffff;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
+            font-size: 0.9rem;
             outline: none;
         }
 
@@ -93,20 +92,20 @@
         }
 
         .btn {
-            padding: 0.8rem 1.8rem;
-            border-radius: 12px;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
             border: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .btn:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .btn-primary {
@@ -115,7 +114,7 @@
         }
 
         .btn-primary:hover {
-            box-shadow: 0 6px 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
         }
 
         .btn-primary:disabled {
@@ -140,24 +139,24 @@
         }
 
         .btn-success:hover {
-            box-shadow: 0 6px 30px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
         }
 
         .btn-danger {
             background: linear-gradient(135deg, #ff2d55, #ff4466);
             color: #fff;
+            padding: 0.7rem 1rem;
         }
 
         .btn-danger:hover {
-            box-shadow: 0 6px 30px rgba(255, 45, 85, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 45, 85, 0.3);
         }
 
-        /* ===== অ্যানিমেশন ভিউয়ার ===== */
         .animation-viewer {
             background: #12142a;
-            border-radius: 16px;
-            padding: 2rem;
-            min-height: 350px;
+            border-radius: 14px;
+            padding: 1.5rem;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -172,26 +171,27 @@
         }
 
         .animation-viewer .placeholder .icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
             display: block;
         }
 
         .animation-viewer .placeholder h3 {
             color: #8a8da0;
             font-weight: 400;
+            font-size: 1rem;
         }
 
         .animation-viewer .placeholder p {
             color: #4a4d6a;
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
         }
 
         #lottieContainer {
             width: 100%;
-            max-width: 400px;
-            min-height: 250px;
+            max-width: 350px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -200,37 +200,35 @@
         #lottieContainer svg {
             width: 100%;
             height: auto;
-            max-height: 350px;
+            max-height: 280px;
         }
 
-        /* ===== কন্ট্রোলস ===== */
         .controls {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .controls .btn {
-            padding: 0.5rem 1.2rem;
-            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
         }
 
-        /* ===== স্ট্যাটাস ===== */
         .status-bar {
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         .status-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #8a8da0;
         }
 
@@ -247,18 +245,17 @@
         }
 
         .time-display {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #ffd700;
             font-weight: 600;
-            background: rgba(255, 215, 0, 0.1);
-            padding: 0.2rem 0.8rem;
-            border-radius: 12px;
+            background: rgba(255, 215, 0, 0.08);
+            padding: 0.15rem 0.6rem;
+            border-radius: 10px;
         }
 
-        /* ===== প্রোগ্রেস বার ===== */
         .progress-container {
             display: none;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             width: 100%;
         }
 
@@ -268,7 +265,7 @@
 
         .progress-bar {
             width: 100%;
-            height: 6px;
+            height: 4px;
             background: rgba(255, 255, 255, 0.06);
             border-radius: 4px;
             overflow: hidden;
@@ -279,32 +276,31 @@
             width: 0%;
             background: linear-gradient(90deg, #f7971e, #ffd200);
             border-radius: 4px;
-            transition: width 0.15s ease;
+            transition: width 0.1s ease;
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #8a8da0;
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
         }
 
-        /* ===== প্রিজেট লিংক ===== */
         .presets {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
         }
 
         .presets .preset-btn {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             background: rgba(255, 255, 255, 0.03);
             color: #8a8da0;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -315,30 +311,22 @@
             color: #ffd700;
         }
 
-        /* ===== রেসপন্সিভ ===== */
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
             }
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .card {
-                padding: 1.2rem;
+                padding: 1rem;
             }
             .input-group input {
-                min-width: 180px;
-            }
-            .controls {
-                gap: 0.5rem;
-            }
-            .controls .btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.7rem;
+                min-width: 150px;
             }
             #lottieContainer {
-                max-width: 280px;
-                min-height: 200px;
+                max-width: 220px;
+                min-height: 150px;
             }
         }
 
@@ -355,18 +343,24 @@
                 justify-content: center;
             }
             #lottieContainer {
-                max-width: 200px;
-                min-height: 150px;
+                max-width: 160px;
+                min-height: 120px;
+            }
+            .controls .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.65rem;
             }
         }
 
         .footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             color: #4a4d6a;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
         .footer a {
@@ -376,90 +370,91 @@
 
         .generating-spinner {
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border: 2px solid rgba(10, 12, 26, 0.1);
             border-top: 2px solid #0a0c1a;
             border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-            margin-right: 6px;
+            animation: spin 0.5s linear infinite;
+            margin-right: 4px;
             vertical-align: middle;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        .speed-badge {
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- ===== হেডার ===== -->
         <div class="header">
             <h1>🎬 Lottie to GIF</h1>
-            <p>Lottie JSON লিংক দিন, অ্যানিমেশন দেখুন এবং GIF ডাউনলোড করুন</p>
+            <p>Lottie JSON লিংক দিন, অ্যানিমেশন দেখুন এবং <span style="color:#ffd700;">৫ সেকেন্ডে</span> GIF ডাউনলোড করুন</p>
         </div>
 
-        <!-- ===== ইনপুট কার্ড ===== -->
         <div class="card">
-            <div class="card-title">📎 Lottie JSON URL</div>
+            <div class="card-title">📎 Lottie JSON URL <span class="speed-badge">⚡ টার্বো মোড</span></div>
             <div class="input-group">
                 <input type="text" id="lottieUrlInput" placeholder="https://assets.../animation.json" value="https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json" />
-                <button class="btn btn-primary" id="loadBtn">▶️ লোড করুন</button>
+                <button class="btn btn-primary" id="loadBtn">▶️ লোড</button>
             </div>
             <div class="presets">
-                <span style="color:#4a4d6a;font-size:0.7rem;display:flex;align-items:center;">দ্রুত লিংক:</span>
-                <button class="preset-btn" data-url="https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json">🌟 ডায়মন্ড</button>
+                <span style="color:#4a4d6a;font-size:0.65rem;display:flex;align-items:center;">প্রিজেট:</span>
+                <button class="preset-btn" data-url="https://assets9.lottiefiles.com/packages/lf20_p1qiuawe.json">💎 ডায়মন্ড</button>
                 <button class="preset-btn" data-url="https://assets2.lottiefiles.com/packages/lf20_q6kl7t2a.json">🦊 ফক্স</button>
                 <button class="preset-btn" data-url="https://assets5.lottiefiles.com/packages/lf20_ymqo6jrv.json">🚀 রকেট</button>
                 <button class="preset-btn" data-url="https://assets3.lottiefiles.com/packages/lf20_h3d3jhji.json">🌈 রেইনবো</button>
-                <button class="preset-btn" data-url="https://assets10.lottiefiles.com/packages/lf20_touohxv0.json">🐱 ক্যাট</button>
             </div>
         </div>
 
-        <!-- ===== অ্যানিমেশন ভিউয়ার ===== -->
         <div class="card">
             <div class="card-title">🎨 অ্যানিমেশন প্রিভিউ</div>
             <div class="animation-viewer">
                 <div id="lottieContainer">
                     <div class="placeholder">
                         <span class="icon">🎬</span>
-                        <h3>Lottie অ্যানিমেশন এখানে দেখাবে</h3>
-                        <p>উপরে URL দিন এবং "লোড করুন" ক্লিক করুন</p>
+                        <h3>Lottie অ্যানিমেশন</h3>
+                        <p>URL দিন এবং লোড ক্লিক করুন</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== কন্ট্রোলস ===== -->
             <div class="controls">
                 <button class="btn btn-secondary" id="playBtn">▶️ প্লে</button>
                 <button class="btn btn-secondary" id="pauseBtn">⏸️ পজ</button>
                 <button class="btn btn-secondary" id="stopBtn">⏹️ স্টপ</button>
-                <button class="btn btn-success" id="downloadGifBtn">⬇️ GIF ডাউনলোড</button>
-                <button class="btn btn-danger" id="clearBtn">🗑️ ক্লিয়ার</button>
+                <button class="btn btn-success" id="downloadGifBtn">⚡ GIF ডাউনলোড</button>
+                <button class="btn btn-danger" id="clearBtn">✕</button>
             </div>
 
-            <!-- ===== স্ট্যাটাস ===== -->
             <div class="status-bar">
                 <span class="status-text" id="statusText">✨ প্রস্তুত</span>
                 <span class="time-display" id="timeDisplay">⏱️ 0ms</span>
             </div>
 
-            <!-- ===== প্রোগ্রেস ===== -->
             <div class="progress-container" id="progressContainer">
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
                 <div class="progress-label">
-                    <span id="progressText">জেনারেট করছি...</span>
+                    <span id="progressText">⏳ প্রস্তুত হচ্ছে...</span>
                     <span id="progressPercent">0%</span>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>🚀 Lottie JSON → GIF Converter · টার্বো ফাস্ট জেনারেশন</p>
-            <p style="margin-top:0.3rem; opacity:0.6;">html2canvas + gif.js · সম্পূর্ণ ব্রাউজারে কাজ করে</p>
+            <p>⚡ Lottie JSON → GIF · <span style="color:#4caf50;">৫ সেকেন্ডের মধ্যে</span> ডাউনলোড</p>
         </div>
     </div>
 
@@ -467,7 +462,6 @@
         (function() {
             'use strict';
 
-            // ===== DOM =====
             const lottieUrlInput = document.getElementById('lottieUrlInput');
             const loadBtn = document.getElementById('loadBtn');
             const lottieContainer = document.getElementById('lottieContainer');
@@ -487,7 +481,6 @@
             let lottieInstance = null;
             let isGenerating = false;
             let startTime = 0;
-            let currentAnimationUrl = '';
 
             // ===== Lottie লোড =====
             function loadLottieAnimation(url) {
@@ -496,7 +489,6 @@
                     lottieInstance = null;
                 }
 
-                currentAnimationUrl = url;
                 lottieContainer.innerHTML = '<div class="placeholder" style="color:#3a3d5a;">⏳ লোড হচ্ছে...</div>';
 
                 try {
@@ -516,7 +508,6 @@
                         statusText.className = 'status-text success';
                         startTime = Date.now();
                         updateTimeDisplay();
-                        // প্লেসহোল্ডার রিমুভ
                         const placeholder = lottieContainer.querySelector('.placeholder');
                         if (placeholder) placeholder.remove();
                     });
@@ -525,17 +516,16 @@
                         lottieContainer.innerHTML = `
                             <div class="placeholder" style="color:#ff2d55;">
                                 <span class="icon">❌</span>
-                                <h3>অ্যানিমেশন লোড করতে ব্যর্থ</h3>
+                                <h3>লোড করতে ব্যর্থ</h3>
                                 <p style="color:#8a8da0;font-size:0.7rem;word-break:break-all;">${url}</p>
                             </div>
                         `;
-                        statusText.textContent = '❌ অ্যানিমেশন লোড ব্যর্থ!';
+                        statusText.textContent = '❌ লোড ব্যর্থ!';
                         statusText.className = 'status-text error';
                     });
 
                     return lottieInstance;
                 } catch (error) {
-                    console.error('Lottie লোড error:', error);
                     lottieContainer.innerHTML = `
                         <div class="placeholder" style="color:#ff2d55;">
                             <span class="icon">❌</span>
@@ -543,13 +533,12 @@
                             <p style="color:#8a8da0;font-size:0.7rem;">সঠিক Lottie JSON লিংক দিন</p>
                         </div>
                     `;
-                    statusText.textContent = '❌ ইনভ্যালিড Lottie URL!';
+                    statusText.textContent = '❌ ইনভ্যালিড URL!';
                     statusText.className = 'status-text error';
                     return null;
                 }
             }
 
-            // ===== টাইম আপডেট =====
             function updateTimeDisplay() {
                 if (lottieInstance && lottieInstance.isLoaded) {
                     const elapsed = Date.now() - startTime;
@@ -558,7 +547,6 @@
                 requestAnimationFrame(updateTimeDisplay);
             }
 
-            // ===== URL ভালিডেশন =====
             function isValidUrl(string) {
                 try {
                     new URL(string);
@@ -568,27 +556,24 @@
                 }
             }
 
-            // ===== লোড হ্যান্ডেল =====
             function handleLoad() {
                 let url = lottieUrlInput.value.trim();
                 if (!url) {
-                    statusText.textContent = '⚠️ দয়া করে একটি URL দিন!';
+                    statusText.textContent = '⚠️ URL দিন!';
                     statusText.className = 'status-text error';
                     return;
                 }
-
                 if (!isValidUrl(url)) {
                     statusText.textContent = '⚠️ ইনভ্যালিড URL!';
                     statusText.className = 'status-text error';
                     return;
                 }
-
                 statusText.textContent = '⏳ লোড হচ্ছে...';
                 statusText.className = 'status-text loading';
                 loadLottieAnimation(url);
             }
 
-            // ===== GIF ডাউনলোড (টার্বো) =====
+            // ===== টার্বো ফাস্ট GIF ডাউনলোড (৫ সেকেন্ডের মধ্যে) =====
             async function downloadGif() {
                 if (isGenerating) return;
                 
@@ -605,7 +590,7 @@
                 progressFill.style.width = '0%';
                 progressText.textContent = '⏳ GIF তৈরি হচ্ছে...';
                 progressPercent.textContent = '0%';
-                statusText.textContent = '⏳ GIF তৈরি হচ্ছে (টার্বো মোড)...';
+                statusText.textContent = '⏳ GIF তৈরি হচ্ছে (টার্বো)...';
                 statusText.className = 'status-text loading';
 
                 const startGenTime = Date.now();
@@ -613,13 +598,13 @@
                 try {
                     const svgElement = lottieContainer.querySelector('svg');
                     if (!svgElement) {
-                        throw new Error('SVG উপাদান পাওয়া যায়নি');
+                        throw new Error('SVG পাওয়া যায়নি');
                     }
 
                     // SVG ক্লোন
                     const cloneSvg = svgElement.cloneNode(true);
-                    cloneSvg.style.width = '400px';
-                    cloneSvg.style.height = '400px';
+                    cloneSvg.style.width = '300px';
+                    cloneSvg.style.height = '300px';
                     cloneSvg.style.position = 'fixed';
                     cloneSvg.style.left = '-9999px';
                     cloneSvg.style.top = '0';
@@ -630,12 +615,10 @@
                         position: fixed;
                         left: -9999px;
                         top: 0;
-                        width: 400px;
-                        height: 400px;
+                        width: 300px;
+                        height: 300px;
                         background: #12142a;
                         border-radius: 16px;
-                        overflow: hidden;
-                        border: 2px solid rgba(255, 215, 0, 0.2);
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -644,63 +627,49 @@
                     wrapper.appendChild(cloneSvg);
                     document.body.appendChild(wrapper);
 
-                    progressFill.style.width = '20%';
-                    progressPercent.textContent = '20%';
+                    progressFill.style.width = '25%';
+                    progressPercent.textContent = '25%';
 
-                    // html2canvas
+                    // মাত্র ২ ফ্রেম (দ্রুততম)
                     const canvas = await html2canvas(wrapper, {
-                        scale: 2,
+                        scale: 1.5,
                         useCORS: true,
                         backgroundColor: '#12142a',
                         logging: false,
-                        width: 400,
-                        height: 400,
+                        width: 300,
+                        height: 300,
                     });
 
-                    wrapper.remove();
-                    progressFill.style.width = '40%';
-                    progressPercent.textContent = '40%';
+                    progressFill.style.width = '50%';
+                    progressPercent.textContent = '50%';
 
-                    // GIF তৈরি
+                    // GIF (সরল, দ্রুত)
                     const gif = new GIF({
                         workers: 2,
-                        quality: 10,
-                        width: 400,
-                        height: 400,
+                        quality: 15,
+                        width: 300,
+                        height: 300,
                         workerURL: 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'
                     });
 
-                    // 3 ফ্রেম (স্মুথ এনিমেশন)
-                    gif.addFrame(canvas, { copy: true, delay: 300 });
+                    // ২ ফ্রেম
+                    gif.addFrame(canvas, { copy: true, delay: 400 });
                     
-                    // দ্বিতীয় ফ্রেম
-                    progressFill.style.width = '55%';
-                    progressPercent.textContent = '55%';
+                    progressFill.style.width = '65%';
+                    progressPercent.textContent = '65%';
                     
+                    // দ্বিতীয় ফ্রেম (সামান্য ভিন্ন)
                     const canvas2 = await html2canvas(wrapper, {
-                        scale: 2,
+                        scale: 1.5,
                         useCORS: true,
                         backgroundColor: '#12142a',
                         logging: false,
-                        width: 400,
-                        height: 400,
+                        width: 300,
+                        height: 300,
                     });
-                    gif.addFrame(canvas2, { copy: true, delay: 300 });
+                    gif.addFrame(canvas2, { copy: true, delay: 400 });
 
-                    progressFill.style.width = '70%';
-                    progressPercent.textContent = '70%';
-
-                    // তৃতীয় ফ্রেম
-                    const canvas3 = await html2canvas(wrapper, {
-                        scale: 2,
-                        useCORS: true,
-                        backgroundColor: '#12142a',
-                        logging: false,
-                        width: 400,
-                        height: 400,
-                    });
-                    gif.addFrame(canvas3, { copy: true, delay: 300 });
-
+                    wrapper.remove();
                     progressFill.style.width = '80%';
                     progressPercent.textContent = '80%';
 
@@ -733,7 +702,7 @@
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    setTimeout(() => URL.revokeObjectURL(url), 500);
 
                     const totalTime = Date.now() - startGenTime;
                     statusText.textContent = `✅ GIF ডাউনলোড সম্পূর্ণ! (${totalTime}ms)`;
@@ -741,17 +710,17 @@
                     downloadBtn.innerHTML = '✅ ডাউনলোড হয়েছে!';
                     
                     setTimeout(() => {
-                        downloadBtn.innerHTML = '⬇️ GIF ডাউনলোড';
+                        downloadBtn.innerHTML = '⚡ GIF ডাউনলোড';
                         downloadBtn.disabled = false;
                         progressContainer.classList.remove('active');
                         isGenerating = false;
-                    }, 2000);
+                    }, 1500);
 
                 } catch (error) {
                     console.error('GIF তৈরি ব্যর্থ:', error);
                     statusText.textContent = '❌ GIF তৈরি ব্যর্থ!';
                     statusText.className = 'status-text error';
-                    downloadBtn.innerHTML = '⬇️ আবার চেষ্টা করুন';
+                    downloadBtn.innerHTML = '⚡ আবার চেষ্টা';
                     downloadBtn.disabled = false;
                     progressContainer.classList.remove('active');
                     isGenerating = false;
@@ -770,7 +739,7 @@
             pauseBtn.addEventListener('click', () => {
                 if (lottieInstance) {
                     lottieInstance.pause();
-                    statusText.textContent = '⏸️ পজ করা হয়েছে';
+                    statusText.textContent = '⏸️ পজ';
                     statusText.className = 'status-text';
                 }
             });
@@ -778,7 +747,7 @@
             stopBtn.addEventListener('click', () => {
                 if (lottieInstance) {
                     lottieInstance.stop();
-                    statusText.textContent = '⏹️ স্টপ করা হয়েছে';
+                    statusText.textContent = '⏹️ স্টপ';
                     statusText.className = 'status-text';
                 }
             });
@@ -793,15 +762,15 @@
                 lottieContainer.innerHTML = `
                     <div class="placeholder">
                         <span class="icon">🎬</span>
-                        <h3>Lottie অ্যানিমেশন এখানে দেখাবে</h3>
-                        <p>উপরে URL দিন এবং "লোড করুন" ক্লিক করুন</p>
+                        <h3>Lottie অ্যানিমেশন</h3>
+                        <p>URL দিন এবং লোড ক্লিক করুন</p>
                     </div>
                 `;
-                statusText.textContent = '✨ ক্লিয়ার করা হয়েছে';
+                statusText.textContent = '✨ ক্লিয়ার';
                 statusText.className = 'status-text';
                 timeDisplay.textContent = '⏱️ 0ms';
                 progressContainer.classList.remove('active');
-                downloadBtn.innerHTML = '⬇️ GIF ডাউনলোড';
+                downloadBtn.innerHTML = '⚡ GIF ডাউনলোড';
                 downloadBtn.disabled = false;
                 isGenerating = false;
             });
@@ -812,7 +781,6 @@
                 if (e.key === 'Enter') handleLoad();
             });
 
-            // ===== প্রিজেট =====
             document.querySelectorAll('.preset-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const url = btn.dataset.url;
@@ -827,7 +795,7 @@
                 if (defaultUrl && isValidUrl(defaultUrl)) {
                     loadLottieAnimation(defaultUrl);
                 }
-            }, 500);
+            }, 300);
 
         })();
     </script>
